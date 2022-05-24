@@ -1,0 +1,37 @@
+module Test exports (
+    main,
+);
+
+import Ref;
+
+
+ten: Int = 10;  -- TODO: move to effect let binding once that's implemented
+
+main = do {
+    ref <- Ref.new(0);
+    value0 <- Ref.get(ref);
+    assert_int_eq(value0, 0);
+    -- `get` again to check idempotency
+    value1 <- Ref.get(ref);
+    assert_int_eq(value1, 0);
+    -- `set` to 1
+    Ref.set(ref, 1);
+    value2 <- Ref.get(ref);
+    assert_int_eq(value2, 1);
+    -- `set` to 10 (via `modify`)
+    Ref.modify(ref, (_n) -> ten);
+    value3 <- Ref.get(ref);
+    assert_int_eq(value2, 1);  -- make sure this hasn't changed
+    assert_int_eq(value3, 10);
+    -- add 5
+    Ref.modify(ref, (n) -> int_add(n, 5));
+    value4 <- Ref.get(ref);
+    assert_int_eq(value3, 10);  -- make sure this hasn't changed
+    assert_int_eq(value4, 15);
+    -- Sweet 👍
+    return unit
+};
+
+foreign assert_int_eq: (Int, Int) -> Effect(Unit);
+
+foreign int_add: (Int, Int) -> Int;

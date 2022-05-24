@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "pretest": "ditto make",
+    "test": "run-func ./dist/Test.js main"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "prettier": "2.6.2",
+    "run-func": "3.0.0"
+  }
+}

@@ -1,0 +1,26 @@
+module Ref exports (
+    Ref,
+    new,
+    get,
+    set,
+    modify,
+);
+
+
+type Ref(a);
+
+new = new_impl;
+
+foreign new_impl: (a) -> Effect(Ref(a));
+
+get = get_impl;
+
+foreign get_impl: (Ref(a)) -> Effect(a);
+
+set = set_impl;
+
+foreign set_impl: (Ref(a), a) -> Effect(Unit);
+
+modify = modify_impl;
+
+foreign modify_impl: (Ref(a), (a) -> a) -> Effect(a);
