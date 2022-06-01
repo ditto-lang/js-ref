@@ -19,12 +19,12 @@ main = do {
     value2 <- Ref.get(ref);
     assert_int_eq(value2, 1);
     -- `set` to 10 (via `modify`)
-    Ref.modify(ref, (_n) -> ten);
+    Ref.modify(ref, fn (_n) -> ten);
     value3 <- Ref.get(ref);
     assert_int_eq(value2, 1);  -- make sure this hasn't changed
     assert_int_eq(value3, 10);
     -- add 5
-    Ref.modify(ref, (n) -> int_add(n, 5));
+    Ref.modify(ref, fn (n) -> int_add(n, 5));
     value4 <- Ref.get(ref);
     assert_int_eq(value3, 10);  -- make sure this hasn't changed
     assert_int_eq(value4, 15);
