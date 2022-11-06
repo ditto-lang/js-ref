@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "pretest": "ditto make",
+    "test": "run-func ./dist/Ref_Test.js main"
+  },
+  "devDependencies": {
+    "prettier": "2.6.2",
+    "run-func": "3.0.0"
+  }
+}
