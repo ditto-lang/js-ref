@@ -1,8 +1,8 @@
 module Ref.Test exports (
     main,
-);
+)
 
-import Ref;
+import Ref
 
 
 main = do {
@@ -29,8 +29,8 @@ main = do {
     assert_int_eq(value4, 15);
     -- Sweet 👍
     return unit
-};
+}
 
-foreign assert_int_eq: (Int, Int) -> Effect(Unit);
+foreign assert_int_eq: (Int, Int) -> Effect(Unit)
 
-foreign int_add: (Int, Int) -> Int;
+foreign int_add: (Int, Int) -> Int

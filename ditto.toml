@@ -1,2 +1,3 @@
 name = "js-ref"
 targets = ["web", "nodejs"]
+ditto-version = ">=0.0.3"
