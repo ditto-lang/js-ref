@@ -38,9 +38,8 @@ export function set_impl(ref, value) {
  */
 export function modify_impl(ref, fn) {
   return () => {
-    const value = ref.current;
-    ref.current = fn(value);
-    return value;
+    const newValue = (ref.current = fn(ref.current));
+    return newValue;
   };
 }
 
